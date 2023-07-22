@@ -1,0 +1,21 @@
+
+
+```mermaid
+
+sequenceDiagram
+participant Browser
+participant Server
+
+Browser ->> Server: HTTP GET .../spa
+Server ->> Browser: html file
+Browser ->> Server: HTTP GET /main.css 
+Server ->> Browser: main.css file
+Browser ->> Server: HTTP GET /spa.js 
+Server ->> Browser: spa.js file
+note over Browser: Browser executes JS code and fetches data.json
+Browser ->> Server: HTTP GET /data.json 
+note over Server: Return of all stored note objects in json
+Server ->> Browser: [{content: "hello", date: "23-05-20xx"}, ...]
+note over Browser: Event handler triggers rendering of notes
+
+``` 

@@ -1,0 +1,16 @@
+
+
+```mermaid
+
+%% Task: Depict the user submiting a new note in the SPA version 
+
+sequenceDiagram
+participant Browser
+participant Server
+
+note left of Browser: Browser displays user's note <br> alongside notes fetched from server, <br> then sends the new note to Server
+Browser ->> Server: HTTP POST request
+note over Server: Server adds the note to its list 
+Server ->> Browser: HTTP 201 status response
+
+```
