@@ -1,13 +1,12 @@
 
 
 ```mermaid
-%% Task: Create diagram depicting a user creating a new note on the notes %% page through writing something on the field and clicking submit
 
-%% Notes:
+%% Task: Create diagram depicting a user creating a new note on the notes page through writing something on the field and clicking submit
+
 %% B sends HTTP POST to server address /new_note
 %% S responds with url redirect 302 status /notes
-%% B reloads notes and sends two HTTP get requests for main.css
-%%      main.js
+%% B reloads notes and sends two HTTP get requests for main.css and main.js
 %% B executes main.js and addsgi another request for data.json
 %% Server creates new object and adds it to an array 'notes'
 %% B renders notes 
@@ -31,4 +30,5 @@ Browser ->> Server: HTTP GET /data.json
 note over Server: Server creates new object to 'notes' array using POST's data
 Server ->> Browser: new notes array
 note over Browser: Event handler triggers rendering of new notes
+
 ```
