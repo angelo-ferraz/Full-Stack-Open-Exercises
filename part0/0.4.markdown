@@ -1,0 +1,34 @@
+
+
+:::mermaid
+%% Task: Create diagram depicting a user creating a new note on the notes %% page through writing something on the field and clicking submit
+
+%% Notes:
+%% B sends HTTP POST to server address /new_note
+%% S responds with url redirect 302 status /notes
+%% B reloads notes and sends two HTTP get requests for main.css
+%%      main.js
+%% B executes main.js and adds another request for data.json
+%% Server creates new object and adds it to an array 'notes'
+%% B renders notes 
+
+sequenceDiagram
+participant Browser
+participant Server
+
+Browser ->> Server: HTTP POST request to /new_note
+Server ->> Browser: HTTP status code 302, redirects browser to /notes
+Browser ->> Server: HTTP GET request /notes
+note over Browser: browser reloads notes and re-reads html code
+
+
+Browser ->> Server: HTTP GET /main.css
+Server ->> Browser: /main.css file
+Browser ->> Server: HTTP GET /main.js
+Server ->> Browser: /main.js file
+note over Browser: browser executes js code and fetches data.json
+Browser ->> Server: HTTP GET /data.json
+note over Server: Server creates new object to 'notes' array using POST's data
+Server ->> Browser: new notes array
+note over Browser: Event handler triggers rendering of new notes
+:::
